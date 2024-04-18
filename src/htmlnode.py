@@ -181,8 +181,6 @@ def markdown_to_blocks(md):
     return blocks
 
 def block_to_block_type(block):
-    type = block_types.PARAGRAPH
-    
     if re.match(r"#{1,6} ", block):
         return block_types.HEADING
     if block.startswith('```') and block.endswith('```'):
