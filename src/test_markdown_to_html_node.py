@@ -90,3 +90,23 @@ class TestHTMLNode(unittest.TestCase):
         e = '<div><blockquote>this is a quote</blockquote></div>'
         c = markdown_to_html_node(md).to_html()
         self.assertEqual(e, c)
+    
+    def test_multi_quote(self):
+        md = '''
+        >this is a quote
+        
+        >this is another
+        '''
+        e = '<div><blockquote>this is a quote</blockquote><blockquote>this is another</blockquote></div>'
+        c = markdown_to_html_node(md).to_html()
+        self.assertEqual(e, c)
+    
+    def test_multi_line_quote(self):
+        md = '''
+        >this is a quote
+        >that spans across
+        >multiple lines
+        '''
+        e = '<div><blockquote>this is a quote\nthat spans across\nmultiple lines</blockquote></div>'
+        c = markdown_to_html_node(md).to_html()
+        self.assertEqual(e, c)
