@@ -138,3 +138,31 @@ class TestHTMLNode(unittest.TestCase):
         e = '<div><ul><li>this is a ul</li><li>that spans across</li><li>multiple lines</li></ul></div>'
         c = markdown_to_html_node(md).to_html()
         self.assertEqual(e, c)
+    
+    def test_one_ol(self):
+        md = '''
+        1. this is an ol
+        '''
+        e = '<div><ol><li>this is an ol</li></ol></div>'
+        c = markdown_to_html_node(md).to_html()
+        self.assertEqual(e, c)
+    
+    def test_multi_ol(self):
+        md = '''
+        1. this is an ol
+        
+        1. this is another
+        '''
+        e = '<div><ol><li>this is an ol</li></ol><ol><li>this is another</li></ol></div>'
+        c = markdown_to_html_node(md).to_html()
+        self.assertEqual(e, c)
+    
+    def test_multi_line_ol(self):
+        md = '''
+        1. this is an ol
+        2. that spans across
+        3. multiple lines
+        '''
+        e = '<div><ol><li>this is an ol</li><li>that spans across</li><li>multiple lines</li></ol></div>'
+        c = markdown_to_html_node(md).to_html()
+        self.assertEqual(e, c)

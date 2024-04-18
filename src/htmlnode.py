@@ -221,7 +221,7 @@ def block_to_HTMLNode(block):
     if type == block_types.OL:
         items = []
         for line in block.split('\n'):
-            items += ParentNode('li', text_to_textnodes(line), {})
+            items.append(ParentNode('li', text_to_textnodes(line[3:]), {}))
         return ParentNode("ol", items, {})
 
 
