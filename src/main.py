@@ -46,8 +46,8 @@ def generate_pages_recursive(dir_path_content, template_path, dest_dir_path):
 
 
 def main():
+    shutil.rmtree('public/')
     move_static(static)
-    # generate_page('content/index.md', 'template.html', 'public/index.html')
     generate_pages_recursive('content/', 'template.html', 'public/')
     return 
 
